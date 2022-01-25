@@ -19,6 +19,27 @@ $(document).ready(function(){
     $("#row-16 .description").val(localStorage.getItem("row-16"));
     $("#row-17 .description").val(localStorage.getItem("row-17"));
 
+    function timeColor() {
+        var currentTime = moment().hour();
+
+        $(".time-block").each(function(){
+            var rowTime = parseInt($(this).attr("id").split("-")[1]);
+
+            if (rowTime < currentTime) {
+                $(this).addClass("past");
+            }
+            else if (currentTime === rowTime) {
+                $(this).addClass("present");
+            } 
+            else {
+                $(this).addClass("future");
+            };
+
+            
+        });
+    };
+
+    timeColor();
 
 
-})
+});
